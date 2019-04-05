@@ -1,0 +1,52 @@
+.header {
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #fff;
+    padding: 10px;
+    display: inline-block;
+    width: 100%;
+    padding-top: 15px;
+}
+.header a {
+    color: #fff !important;
+    margin: 5px;
+    text-decoration: none !important;
+    background-color: none;
+    padding: 13px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.header a:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+.header a.selected {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.sub-header {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+.sub-header .box-sub-header {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+}
+.box-sub-header a {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 25px;
+    text-align: center;
+}
+.box-sub-header a:hover {
+    color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(255, 255, 255, 0.8);
+}
+.box-sub-header .icon {
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+.box-sub-header p {
+    color: #fff;
+    padding-top: 15px;
+}
