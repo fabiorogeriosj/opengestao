@@ -29,6 +29,7 @@
 			"it",
 			"expect",
 			"afterAll",
+			"fetch",
 			"createWindow"
 		],
 		"parser": "babel-eslint",
@@ -41,6 +42,7 @@
 		"bootstrap": "^4.3.1",
 		"electron-is-dev": "^0.3.0",
 		"electron-publisher-s3": "^20.17.2",
+		"mysql": "^2.16.0",
 		"react": "^16.4.1",
 		"react-bootstrap": "^1.0.0-beta.6",
 		"react-dev-utils": "^5.0.1",

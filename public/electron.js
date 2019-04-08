@@ -1,15 +1,46 @@
-const { app, BrowserWindow, shell, ipcMain, Menu, TouchBar } = require('electron')
-const { TouchBarButton, TouchBarLabel, TouchBarSpacer } = TouchBar
+const { app, BrowserWindow, shell, ipcMain, Menu } = require('electron')
 
 const path = require('path')
 const isDev = require('electron-is-dev')
+var mysql = require('mysql')
+var util = require('util')
 
 let mainWindow
 
-createWindow = () => {
+let pool
+
+ipcMain.on('database-exec-connect', async (event, arg) => {
+  pool = mysql.createPool({
+    connectionLimit: 100,
+    host: arg.host,
+    user: arg.user,
+    password: arg.password,
+    database: arg.dbname,
+    port: arg.port
+  })
+  pool.query = util.promisify(pool.query)
+  try {
+    const result = await pool.query('show tables')
+    event.returnValue = { data: result }
+  } catch (error) {
+    event.returnValue = { error }
+  }
+})
+
+ipcMain.on('database-exec-query', async (event, { query, params }) => {
+  try {
+    var result = await pool.query(query, params || [])
+    console.log(result)
+    event.returnValue = { data: result }
+  } catch (error) {
+    event.returnValue = { error }
+  }
+})
+
+const createWindow = () => {
   mainWindow = new BrowserWindow({
     backgroundColor: '#F7F7F7',
-    title: "Open Gestão",
+    title: 'Open Gestão',
     center: true,
     focusable: true,
     minWidth: 880,
@@ -18,7 +49,7 @@ createWindow = () => {
     titleBarStyle: 'hidden',
     webPreferences: {
       nodeIntegration: false,
-      preload: __dirname + '/preload.js'
+      preload: path.join(__dirname, 'preload.js')
     },
     height: 860,
     width: 1280
@@ -59,7 +90,7 @@ createWindow = () => {
   })
 }
 
-generateMenu = () => {
+const generateMenu = () => {
   const template = [
     {
       label: 'File',

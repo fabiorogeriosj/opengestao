@@ -10,3 +10,11 @@
 .table-hover tr {
     cursor: pointer;
 }
+.paddinBigTop {
+    padding-top: 100px;
+}
+label {
+    margin-top: 10px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}

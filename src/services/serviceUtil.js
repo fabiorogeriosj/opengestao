@@ -1,4 +1,3 @@
-
 const formatReal = (number) => {
   if (!number || !Number(number)) return '0,00'
 

@@ -5,7 +5,7 @@ import HeaderProdutos from '../../components/HeaderProdutos'
 import { Table, Form, Row, Col, Button } from 'react-bootstrap'
 import Loading from '../../components/Loading'
 
-import serviceProdutos from '../../services/serviceProdutos'
+import * as serviceProdutos from '../../services/serviceProdutos'
 import serviceUtil from '../../services/serviceUtil'
 
 export default class Produtos extends Component {
