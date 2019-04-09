@@ -41,5 +41,6 @@ window.db.query = (query, params = []) => {
 }
 
 window.alert = {
-  error: msg => setTimeout(() => dialog.showErrorBox('Atenção', msg), 200)
+  error: msg => setTimeout(() => dialog.showErrorBox('Atenção', msg), 200),
+  success: msg => setTimeout(() => dialog.showMessageBox({ title: 'Sucesso', message: msg, type: 'info', buttons: ['OK'] }), 200)
 }

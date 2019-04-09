@@ -18,3 +18,19 @@ label {
     margin-bottom: 0;
     padding-bottom: 0;
 }
+.box-filter {
+    position: fixed;
+    top: 125px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ddd;
+    width: calc(100% - 40px);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    left: 20px;
+}
+.content {
+    padding-top: 160px;
+}
+.row {
+    margin: 0 !important;
+}

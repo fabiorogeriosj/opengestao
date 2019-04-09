@@ -1,10 +1,12 @@
 .header {
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: #1f1f1f;
     color: #fff;
     padding: 10px;
     display: inline-block;
     width: 100%;
     padding-top: 15px;
+    position: fixed;
+    z-index: 100;
 }
 .header a {
     color: #fff !important;
@@ -19,13 +21,17 @@
     background-color: rgba(255, 255, 255, 0.05);
 }
 .header a.selected {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: #333333;
 }
 .sub-header {
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: #333333;
+    position: fixed;
+    width: 100%;
+    top: 48px;
+    z-index: 99;
 }
 .sub-header .box-sub-header {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: #333333;
     padding: 10px;
 }
 .box-sub-header a {

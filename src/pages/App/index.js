@@ -98,6 +98,10 @@ class App extends Component {
     }
   }
 
+  pressEnter = (event) => {
+    if (event.key === 'Enter') this.login()
+  }
+
   render () {
     return (
       <div>
@@ -111,10 +115,10 @@ class App extends Component {
                   <p>Entre com seu usuário e senha para acessar o sistema!</p>
 
                   <Form.Label>Usuário:</Form.Label>
-                  <Form.Control type='text' onChange={this.updateField} id='loginUser' value={this.state.loginUser} />
+                  <Form.Control autoFocus type='text' onChange={this.updateField} id='loginUser' value={this.state.loginUser} />
 
                   <Form.Label>Senha:</Form.Label>
-                  <Form.Control type='password' onChange={this.updateField} id='loginPassword' value={this.state.loginPassword} />
+                  <Form.Control onKeyPress={this.pressEnter} type='password' onChange={this.updateField} id='loginPassword' value={this.state.loginPassword} />
 
                 </Form.Group>
                 <Form.Group>
@@ -142,7 +146,7 @@ class App extends Component {
                   </Form.Control>
 
                   <Form.Label>Host:</Form.Label>
-                  <Form.Control type='text' placeholder='Exemplo: 192.168.1.1' onChange={this.updateField} id='host' value={this.state.host} />
+                  <Form.Control autoFocus type='text' placeholder='Exemplo: 192.168.1.1' onChange={this.updateField} id='host' value={this.state.host} />
 
                   <Form.Label>Usuário:</Form.Label>
                   <Form.Control type='text' placeholder='Exemplo: root' onChange={this.updateField} id='user' value={this.state.user} />
@@ -176,6 +180,7 @@ class App extends Component {
               <Route path='/clientes' exact component={Clientes} />
               <Route path='/produtos' exact component={Produtos} />
               <Route path='/produtos/cadastro' component={ProdutosCadastro} />
+              <Route path='/produtos/cadastro/:id' component={ProdutosCadastro} />
               <Route path='/financeiro' exact component={Financeiro} />
             </div>
           </HashRouter>

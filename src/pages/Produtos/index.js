@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { FaExclamationTriangle, FaSearch } from 'react-icons/fa'
+import { Redirect } from 'react-router-dom'
 
 import HeaderProdutos from '../../components/HeaderProdutos'
 import { Table, Form, Row, Col, Button } from 'react-bootstrap'
@@ -42,17 +43,25 @@ export default class Produtos extends Component {
     }
   }
 
+  edit = (id) => {
+    this.setState({
+      redirectEdit: true,
+      id: id
+    })
+  }
+
   render () {
     return (
-      <div>
+      <div className='content'>
+        { this.state.redirectEdit && (<Redirect to={'/produtos/cadastro/' + this.state.id} />)}
         <HeaderProdutos />
         <div className='list-filter'>
-          <Row>
+          <Row className='box-filter'>
             <Col xs={1.5}>
               <Form.Control as='select' value={this.state.filter} onChange={this.updateFild} id='filter'>
                 <option value='nome'>Nome</option>
                 <option value='descricao'>Descrição</option>
-                <option value='codigo'>Código</option>
+                <option value='id'>Código</option>
               </Form.Control>
             </Col>
             <Col xs={3}>
@@ -64,7 +73,6 @@ export default class Produtos extends Component {
               </Button>
             </Col>
           </Row>
-          <hr />
           { this.state.loading && <Loading />}
           { !this.state.loading && !this.state.list.length && (
             <div className='center'>
@@ -78,16 +86,16 @@ export default class Produtos extends Component {
                 <tr>
                   <th>Codigo</th>
                   <th>Nome</th>
-                  <th>Código barras</th>
+                  <th>Estoque</th>
                   <th>Preço</th>
                 </tr>
               </thead>
               <tbody>
                 { this.state.list.map(item => (
-                  <tr key={item.codigo}>
-                    <td>{item.codigo}</td>
+                  <tr key={item.id} onClick={() => this.edit(item.id)}>
+                    <td>{item.id}</td>
                     <td>{item.nome}</td>
-                    <td>{item.codigoBarras}</td>
+                    <td>{item.estoque}</td>
                     <td>R$ {serviceUtil.formatReal(item.preco)}</td>
                   </tr>
                 ))}
