@@ -6,12 +6,14 @@ import Pedidos from '../Pedidos'
 import Clientes from '../Clientes'
 import Produtos from '../Produtos'
 import ProdutosCadastro from '../ProdutosCadastro'
+import ClientesCadastro from '../ClientesCadastro'
 import Financeiro from '../Financeiro'
 
 import Header from '../../components/Header'
 import Loading from '../../components/Loading'
 
 import * as serviceUsuario from '../../services/serviceUsuario'
+import FinanceiroCadastro from '../FinanceiroCadastro'
 
 class App extends Component {
   state = {
@@ -72,6 +74,13 @@ class App extends Component {
     try {
       const connect = await window.db.connect()
       console.log(connect)
+      if (connect && connect.length) {
+        this.setState({
+          loadingSave: false,
+          showConfigurationDatabase: false,
+          showFormLogin: true
+        })
+      }
     } catch (error) {
       this.setState({ loadingSave: false })
       window.alert.error(error)
@@ -92,7 +101,7 @@ class App extends Component {
         showFormLogin: false
       })
     } catch (error) {
-      console.log(error)
+      console.log('>>>>>', error)
       this.setState({ loadingLogin: false })
       window.alert.error(error)
     }
@@ -178,10 +187,14 @@ class App extends Component {
               <Route exact path='/' render={() => <Redirect to='/pedidos' />} />
               <Route path='/pedidos' exact component={Pedidos} />
               <Route path='/clientes' exact component={Clientes} />
+              <Route path='/clientes/cadastro' exact component={ClientesCadastro} />
+              <Route path='/clientes/cadastro/:id' component={ClientesCadastro} />
               <Route path='/produtos' exact component={Produtos} />
-              <Route path='/produtos/cadastro' component={ProdutosCadastro} />
+              <Route path='/produtos/cadastro' exact component={ProdutosCadastro} />
               <Route path='/produtos/cadastro/:id' component={ProdutosCadastro} />
               <Route path='/financeiro' exact component={Financeiro} />
+              <Route path='/financeiro/cadastro' exact component={FinanceiroCadastro} />
+              <Route path='/financeiro/cadastro/:id' component={FinanceiroCadastro} />
             </div>
           </HashRouter>
         )}

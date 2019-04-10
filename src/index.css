@@ -34,3 +34,12 @@ label {
 .row {
     margin: 0 !important;
 }
+.box-sub-header a {
+    margin-right: 10px;
+}
+table .alert {
+    margin: 0;
+    padding: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+}
