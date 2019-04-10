@@ -6,8 +6,12 @@ export default class HeaderClientes extends Component {
     return (
       <div className='sub-header'>
         <div className='box-sub-header'>
-          <ButtonNew to='/clientes/cadastro' tooltip='Novo cliente' />
+          { this.props.label && (<p>Clientes > {this.props.label}</p>)}
+          { !this.props.label && (
+            <ButtonNew to='/clientes/cadastro' tooltip='Novo cliente' />
+          )}
         </div>
+
       </div>
     )
   }

@@ -6,7 +6,10 @@ export default class HeaderPedidos extends Component {
     return (
       <div className='sub-header'>
         <div className='box-sub-header'>
-          <ButtonNew to='/pedidos/novo' tooltip='Novo pedido' />
+          { this.props.label && (<p>Pedidos > {this.props.label}</p>)}
+          { !this.props.label && (
+            <ButtonNew to='/pedidos/cadastro' tooltip='Novo pedido' />
+          )}
         </div>
       </div>
     )

@@ -97,12 +97,12 @@ export default class Clientes extends Component {
               </thead>
               <tbody>
                 { this.state.list.map(item => (
-                  <tr className={item.situacao === 'Cancelado' ? 'table-danger' : ''} key={item.id} onClick={() => this.edit(item.id)}>
+                  <tr className={item.status === 'Cancelado' ? 'table-danger' : ''} key={item.id} onClick={() => this.edit(item.id)}>
                     <td>{item.id}</td>
                     <td>{item.cliente}</td>
                     <td>{item.cnpj}</td>
                     <td>{item.data} {item.hora}</td>
-                    <td>{item.forma_pagamento}</td>
+                    <td>{item.pagamento}</td>
                     <td>R$ {serviceUtil.formatReal(item.valor_desconto)}</td>
                     <td>R$ {serviceUtil.formatReal(item.total_pedido)}</td>
                     <td>{item.status}</td>

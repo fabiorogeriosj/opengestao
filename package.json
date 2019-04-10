@@ -40,6 +40,7 @@
 	},
 	"dependencies": {
 		"bootstrap": "^4.3.1",
+		"date-fns": "^2.0.0-alpha.27",
 		"electron-is-dev": "^0.3.0",
 		"electron-publisher-s3": "^20.17.2",
 		"moment": "^2.24.0",

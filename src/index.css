@@ -43,3 +43,23 @@ table .alert {
     padding-left: 10px;
     padding-right: 10px;
 }
+.inner-input {
+    position: absolute;
+    margin-left: -25px;
+    margin-top: 5px;
+}
+.pedido-itens {
+    padding: 15px;
+}
+.pedido-itens .box-itens {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.padding-big {
+    padding: 50px;
+}
+.input-edit-number {
+    width: 100px;
+}
+.input-edit-value {
+    width: 150px;
+}

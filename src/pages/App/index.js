@@ -7,6 +7,7 @@ import Clientes from '../Clientes'
 import Produtos from '../Produtos'
 import ProdutosCadastro from '../ProdutosCadastro'
 import ClientesCadastro from '../ClientesCadastro'
+import PedidosCadastro from '../PedidosCadastro'
 import Financeiro from '../Financeiro'
 
 import Header from '../../components/Header'
@@ -25,7 +26,8 @@ class App extends Component {
     port: window.localStorage.getItem('database-port') || 3306,
     dbname: window.localStorage.getItem('database-dbname') || '',
     loginUser: '',
-    loginPassword: ''
+    loginPassword: '',
+    userLogged: null
   }
 
   changeMenu = (menuSelected) => {
@@ -100,8 +102,9 @@ class App extends Component {
         showConfigurationDatabase: false,
         showFormLogin: false
       })
+      // TODO: Remover do window e colocar a passagem do status por props ou usar Redux
+      window.userLogged = user
     } catch (error) {
-      console.log('>>>>>', error)
       this.setState({ loadingLogin: false })
       window.alert.error(error)
     }
@@ -186,6 +189,8 @@ class App extends Component {
               <Header changeMenu={this.changeMenu} />
               <Route exact path='/' render={() => <Redirect to='/pedidos' />} />
               <Route path='/pedidos' exact component={Pedidos} />
+              <Route path='/pedidos/cadastro' exact component={PedidosCadastro} />
+              <Route path='/pedidos/cadastro/:id' component={PedidosCadastro} />
               <Route path='/clientes' exact component={Clientes} />
               <Route path='/clientes/cadastro' exact component={ClientesCadastro} />
               <Route path='/clientes/cadastro/:id' component={ClientesCadastro} />

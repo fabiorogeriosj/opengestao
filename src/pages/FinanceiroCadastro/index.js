@@ -3,6 +3,8 @@ import { Form, Button, Container, Row, Col } from 'react-bootstrap'
 import { Link, Redirect } from 'react-router-dom'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
+import pt from 'date-fns/locale/pt'
+import { FaCalendarAlt } from 'react-icons/fa'
 
 import HeaderFinanceiro from '../../components/HeaderFinanceiro'
 import Loading from '../../components/Loading'
@@ -99,7 +101,10 @@ export default class FinanceiroCadastro extends Component {
               <Col>
                 <Form.Group>
                   <Form.Label>Data vencimento:</Form.Label>
-                  <DatePicker dateFormat='dd/MM/yyyy' className='form-control' selected={this.state.data_vencimento} onChange={this.updateFieldDate} />
+                  <DatePicker locale={pt} dateFormat='dd/MM/yyyy' className='form-control' selected={this.state.data_vencimento} onChange={this.updateFieldDate} id='data_vencimento' />
+                  <label className='inner-input' for='data_vencimento'>
+                    <FaCalendarAlt color='#ccc' />
+                  </label>
                 </Form.Group>
               </Col>
             </Row>
