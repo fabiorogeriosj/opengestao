@@ -2,7 +2,6 @@ import moment from 'moment'
 
 const getList = async (filter) => {
   return new Promise(async (resolve, reject) => {
-    console.log(filter.filter)
     const where = filter.search && filter.search !== '' ? `where ${filter.filter} like '%${filter.search}%'` : ''
     const query = `select financeiro.id,
       clientes.fantasia, clientes.cnpj, DATE_FORMAT(financeiro.data_vencimento, "%d/%m/%Y") as data_vencimento,

@@ -1,9 +1,7 @@
 const getList = async (filter) => {
   return new Promise(async (resolve, reject) => {
-    console.log(filter)
     const where = filter.search && filter.search !== '' ? `where ${filter.filter} like '%${filter.search}%'` : ''
     const query = `select * from produtos ${where} order by nome limit 100`
-    console.log(query)
     const products = await window.db.query(query)
     resolve(products)
   })

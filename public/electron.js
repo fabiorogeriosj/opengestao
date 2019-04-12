@@ -30,7 +30,6 @@ ipcMain.on('database-exec-connect', async (event, arg) => {
 ipcMain.on('database-exec-query', async (event, { query, params }) => {
   try {
     var result = await pool.query(query, params || [])
-    console.log(result)
     event.returnValue = { data: result }
   } catch (error) {
     event.returnValue = { error }

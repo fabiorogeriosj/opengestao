@@ -1,97 +1,109 @@
 {
-	"name": "opengestao",
-	"version": "1.0.0",
-	"description": "Sistema de Gestão simplificado",
-	"private": false,
-	"author": "Fábio Rogério <fabio.rogerio.sj@gmail.com>",
-	"license": "MIT",
-	"homepage": "./",
-	"main": "public/electron.js",
-	"scripts": {
-		"dev": "yarn react-scripts start",
-		"build": "react-scripts build",
-		"start": "concurrently \"cross-env BROWSER=none react-scripts start\" \"wait-on http://localhost:3000 && electron .\"",
-		"pack": "electron-builder --dir",
-		"dist-linux": "npm run build && electron-builder --x64 --linux --c.extraMetadata.main=build/electron.js -p always",
-		"dist": "npm run build && electron-builder --x64 --win --linux --c.extraMetadata.main=build/electron.js -p always",
-		"dist-win-32": "npm run build && electron-builder --ia32 --win --c.extraMetadata.main=build/electron.js -p always"
-	},
-	"keywords": [
-		"opengestao",
-		"React",
-		"Electron"
-	],
-	"standard": {
-		"global": [
-			"describe",
-			"beforeAll",
-			"test",
-			"it",
-			"expect",
-			"afterAll",
-			"fetch",
-			"createWindow"
-		],
-		"parser": "babel-eslint",
-		"ignore": [
-			"build/*",
-			"dist/*"
-		]
-	},
-	"dependencies": {
-		"bootstrap": "^4.3.1",
-		"date-fns": "^2.0.0-alpha.27",
-		"electron-is-dev": "^0.3.0",
-		"electron-publisher-s3": "^20.17.2",
-		"moment": "^2.24.0",
-		"mysql": "^2.16.0",
-		"react": "^16.4.1",
-		"react-bootstrap": "^1.0.0-beta.6",
-		"react-datepicker": "^2.3.0",
-		"react-dev-utils": "^5.0.1",
-		"react-dom": "^16.8.6",
-		"react-icons": "^3.5.0",
-		"react-loading": "^2.0.3",
-		"react-router-dom": "^5.0.0",
-		"react-simple-tooltip": "^2.5.0",
-		"typeface-roboto": "0.0.54"
-	},
-	"devDependencies": {
-		"concurrently": "^3.6.0",
-		"cross-env": "^5.2.0",
-		"electron": "^2.0.3",
-		"electron-builder": "^20.18.0",
-		"electron-devtools-installer": "^2.2.4",
-		"react-scripts": "1.1.4",
-		"standard": "^12.0.1",
-		"version-bump-prompt": "^4.1.0"
-	},
-	"build": {
-		"extends": null,
-		"appId": "io.github.opengestao",
-		"compression": "normal",
-		"productName": "OpenGestão",
-		"files": [
-			"build",
-			"assets",
-			"package.json"
-		],
-		"directories": {
-			"buildResources": "build",
-			"output": "dist"
-		},
-		"win": {
-			"target": "nsis",
-			"icon": "assets/icon.ico"
-		},
-		"linux": {
-			"icon": "assets/icon.png",
-			"target": [
-				"snap",
-				"AppImage"
-			],
-			"description": "OpenGestão",
-			"category": "Network;Feed"
-		}
-	}
+  "name": "opengestao",
+  "version": "1.0.0",
+  "description": "Sistema de Gestão simplificado",
+  "private": false,
+  "author": "Fábio Rogério <fabio.rogerio.sj@gmail.com>",
+  "license": "MIT",
+  "homepage": "./",
+  "main": "public/electron.js",
+  "scripts": {
+    "dev": "yarn react-scripts start",
+    "build": "react-scripts build",
+    "start": "concurrently \"cross-env BROWSER=none react-scripts start\" \"wait-on http://localhost:3000 && electron .\"",
+    "pack": "electron-builder --dir",
+    "dist-linux": "npm run build && electron-builder --x64 --linux --c.extraMetadata.main=build/electron.js -p always",
+    "dist": "npm run build && electron-builder --x64 --win --linux --c.extraMetadata.main=build/electron.js -p always",
+    "dist-win-32": "npm run build && electron-builder --ia32 --win --c.extraMetadata.main=build/electron.js -p always"
+  },
+  "keywords": [
+    "opengestao",
+    "React",
+    "Electron"
+  ],
+  "standard": {
+    "global": [
+      "describe",
+      "beforeAll",
+      "test",
+      "it",
+      "expect",
+      "afterAll",
+      "fetch",
+      "createWindow"
+    ],
+    "parser": "babel-eslint",
+    "ignore": [
+      "build/*",
+      "dist/*"
+    ]
+  },
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "date-fns": "^2.0.0-alpha.27",
+    "electron-is-dev": "^0.3.0",
+    "electron-publisher-s3": "^20.17.2",
+    "moment": "^2.24.0",
+    "mysql": "^2.16.0",
+    "react": "^16.4.1",
+    "react-bootstrap": "^1.0.0-beta.6",
+    "react-datepicker": "^2.3.0",
+    "react-dev-utils": "^5.0.1",
+    "react-dom": "^16.8.6",
+    "react-icons": "^3.5.0",
+    "react-loading": "^2.0.3",
+    "react-router-dom": "^5.0.0",
+    "react-simple-tooltip": "^2.5.0",
+    "typeface-roboto": "0.0.54"
+  },
+  "devDependencies": {
+    "concurrently": "^3.6.0",
+    "cross-env": "^5.2.0",
+    "electron": "^2.0.3",
+    "electron-builder": "^20.18.0",
+    "electron-devtools-installer": "^2.2.4",
+    "react-scripts": "1.1.4",
+    "standard": "^12.0.1",
+    "version-bump-prompt": "^4.1.0"
+  },
+  "build": {
+    "extends": null,
+    "appId": "io.github.opengestao",
+    "compression": "normal",
+    "productName": "OpenGestão",
+    "files": [
+      "build",
+      "assets",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "build",
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico"
+    },
+    "linux": {
+      "icon": "assets/icon.png",
+      "target": [
+        "snap",
+        "AppImage"
+      ],
+      "description": "OpenGestão",
+      "category": "Network;Feed"
+    }
+  },
+  "browserslist": {
+    "development": [
+      "last 2 chrome versions",
+      "last 2 firefox versions",
+      "last 2 edge versions"
+    ],
+    "production": [
+      ">0.25%",
+      "not op_mini all",
+      "ie 11"
+    ]
+  }
 }

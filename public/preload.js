@@ -19,7 +19,6 @@ window.db.connect = () => {
     if (!getConnection().host) return reject(window.db.messageDbNotFound)
 
     const res = ipcRenderer.sendSync('database-exec-connect', getConnection())
-    console.log(res)
     if (res && res.error && res.error.code === 'ENOENT') return reject(window.db.messageDbNotFound)
     if (res && res.error && res.error.sqlMessage) return reject(res.error.sqlMessage)
     if (res && res.data) return resolve(res.data)

@@ -75,7 +75,6 @@ class App extends Component {
 
     try {
       const connect = await window.db.connect()
-      console.log(connect)
       if (connect && connect.length) {
         this.setState({
           loadingSave: false,
