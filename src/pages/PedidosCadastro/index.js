@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Button, Container, Row, Col, Modal, Table } from 'react-bootstrap'
+import { Input, Button, Container, Row, Col, Modal, Table, Label, FormGroup, ModalHeader, ModalBody } from 'reactstrap'
 import { Link, Redirect } from 'react-router-dom'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
@@ -172,13 +172,13 @@ export default class PedidosCadastro extends Component {
   render () {
     return (
       <div className='content'>
-        <Modal size='lg' show={this.state.showAddProduto} onHide={this.hideProduto}>
-          <Modal.Header closeButton>
-            <Modal.Title>Selecione um produto</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
+        <Modal size='lg' isOpen={this.state.showAddProduto} autoFocus onClosed={this.hideProduto}>
+          <ModalHeader closeButton>
+            Selecione um produto
+          </ModalHeader>
+          <ModalBody>
             <ProdutosSelect select={this.selectProduto} />
-          </Modal.Body>
+          </ModalBody>
         </Modal>
 
         <HeaderPedidos label='Cadastro de novo pedido' />
@@ -189,54 +189,54 @@ export default class PedidosCadastro extends Component {
 
             <Row>
               <Col>
-                <Form.Group>
-                  <Form.Label>Cliente:</Form.Label>
-                  <Form.Control autoFocus as='select' value={this.state.cliente} onChange={this.updateField} id='cliente'>
+                <FormGroup>
+                  <Label>Cliente:</Label>
+                  <Input autoFocus type='select' value={this.state.cliente} onChange={this.updateField} id='cliente'>
                     <option value=''>Selecione um cliente</option>
                     { this.state.clientes.map(cliente => (
                       <option key={cliente.id} value={cliente.id}>{cliente.fantasia}</option>
                     ))}
-                  </Form.Control>
-                </Form.Group>
+                  </Input>
+                </FormGroup>
               </Col>
               <Col>
-                <Form.Group>
-                  <Form.Label>Data do pedido:</Form.Label>
+                <FormGroup>
+                  <Label>Data do pedido:</Label>
                   <DatePicker locale={pt} dateFormat='dd/MM/yyyy' className='form-control' selected={this.state.data} onChange={this.updateFieldDate} id='data' />
                   <label className='inner-input' htmlFor='data'>
                     <FaCalendarAlt color='#ccc' />
                   </label>
-                </Form.Group>
+                </FormGroup>
               </Col>
               <Col>
-                <Form.Group>
-                  <Form.Label>Forma de pagamento:</Form.Label>
-                  <Form.Control as='select' value={this.state.pagamento} onChange={this.updateField} id='pagamento'>
+                <FormGroup>
+                  <Label>Forma de pagamento:</Label>
+                  <Input type='select' value={this.state.pagamento} onChange={this.updateField} id='pagamento'>
                     <option value=''>Selecione uma forma de pagamento</option>
                     { this.state.formasPagamento.map(pag => (
                       <option key={pag.id} value={pag.id}>{pag.nome}</option>
                     ))}
-                  </Form.Control>
-                </Form.Group>
+                  </Input>
+                </FormGroup>
               </Col>
               <Col>
-                <Form.Group>
-                  <Form.Label>Status:</Form.Label>
-                  <Form.Control as='select' value={this.state.status} onChange={this.updateField} id='status'>
+                <FormGroup>
+                  <Label>Status:</Label>
+                  <Input type='select' value={this.state.status} onChange={this.updateField} id='status'>
                     <option value='Novo'>Novo</option>
                     <option value='Faturado'>Faturado</option>
                     <option value='Cancelado'>Cancelado</option>
-                  </Form.Control>
-                </Form.Group>
+                  </Input>
+                </FormGroup>
               </Col>
             </Row>
 
             <Row>
               <Col>
-                <Form.Group>
-                  <Form.Label>Observações do pedido:</Form.Label>
-                  <Form.Control type='text' value={this.state.observacao} onChange={this.updateField} id='observacao' />
-                </Form.Group>
+                <FormGroup>
+                  <Label>Observações do pedido:</Label>
+                  <Input type='text' value={this.state.observacao} onChange={this.updateField} id='observacao' />
+                </FormGroup>
               </Col>
             </Row>
 
@@ -250,7 +250,7 @@ export default class PedidosCadastro extends Component {
                   </Row>
                   <Row>
                     <Col>
-                      <Button variant='outline-primary' onClick={this.addProduto}>Adicionar produto</Button>
+                      <Button color='outline-primary' onClick={this.addProduto}>Adicionar produto</Button>
                     </Col>
                   </Row>
                 </div>
@@ -276,20 +276,20 @@ export default class PedidosCadastro extends Component {
                             <tr key={item.produto}>
                               <td className='align-middle'>{item.produto_nome}</td>
                               <td className='align-middle'>
-                                <Form.Control type='text' defaultValue={item.observacao} onChange={(event) => (item.observacao = event.target.value)} />
+                                <Input type='text' defaultValue={item.observacao} onChange={(event) => (item.observacao = event.target.value)} />
                               </td>
                               <td className='align-middle'>
                                 R$ {serviceUtil.formatReal(item.valor_unitario)}
                               </td>
                               <td className='align-middle input-edit-number'>
-                                <Form.Control type='number' defaultValue={item.quantidade} onChange={(event) => this.updateQuantidade(event, item)} />
+                                <Input type='number' defaultValue={item.quantidade} onChange={(event) => this.updateQuantidade(event, item)} />
                               </td>
                               <td className='align-middle input-edit-value'>
-                                <Form.Control type='number' defaultValue={item.valor_desconto} onChange={(event) => this.updateValorDesconto(event, item)} />
+                                <Input type='number' defaultValue={item.valor_desconto} onChange={(event) => this.updateValorDesconto(event, item)} />
                               </td>
                               <td className='align-middle'>R$ {serviceUtil.formatReal(item.valor_total)}</td>
                               <td align='center' className='align-middle'>
-                                <Button onClick={this.removeProduto} index={index} size='sm' variant='outline-danger'>Excluir</Button>
+                                <Button onClick={this.removeProduto} index={index} size='sm' color='outline-danger'>Excluir</Button>
                               </td>
                             </tr>
                           ))}
@@ -297,7 +297,7 @@ export default class PedidosCadastro extends Component {
                             <td className='align-middle' colSpan={3}>Totais</td>
                             <td className='align-middle input-edit-number'>{this.state.quantidade_itens}</td>
                             <td className='align-middle input-edit-value'>
-                              <Form.Control type='number' defaultValue={this.state.valor_desconto} onChange={this.updateValorDescontoPedido} />
+                              <Input type='number' defaultValue={this.state.valor_desconto} onChange={this.updateValorDescontoPedido} />
                             </td>
                             <td className='align-middle'>R$ {serviceUtil.formatReal(this.state.total_pedido)}</td>
                             <td align='center' className='align-middle' />
@@ -308,7 +308,7 @@ export default class PedidosCadastro extends Component {
                   </Row>
                   <Row className='center'>
                     <Col>
-                      <Button variant='outline-primary' onClick={this.addProduto}>Adicionar produto</Button>
+                      <Button color='outline-primary' onClick={this.addProduto}>Adicionar produto</Button>
                     </Col>
                   </Row>
                 </div>
@@ -317,14 +317,14 @@ export default class PedidosCadastro extends Component {
 
             <Row>
               <Col>
-                <Form.Group>
-                  <Button disabled={this.state.loadingSave} onClick={this.save} variant='primary'>
+                <FormGroup>
+                  <Button className='mr-2' disabled={this.state.loadingSave} onClick={this.save} color='primary'>
                     { !this.state.loadingSave ? 'Salvar' : 'Salvando...'}
                   </Button>
                   <Link to='/pedidos'>
-                    <Button variant='secundary'> Cancelar </Button>
+                    <Button color='secundary'> Cancelar </Button>
                   </Link>
-                </Form.Group>
+                </FormGroup>
               </Col>
             </Row>
           </Container>

@@ -3,7 +3,7 @@ import { FaExclamationTriangle, FaSearch } from 'react-icons/fa'
 import { Redirect } from 'react-router-dom'
 
 import HeaderProdutos from '../../components/HeaderProdutos'
-import { Table, Form, Row, Col, Button } from 'react-bootstrap'
+import { Table, Input, Row, Col, Button } from 'reactstrap'
 import Loading from '../../components/Loading'
 
 import * as serviceProdutos from '../../services/serviceProdutos'
@@ -58,17 +58,17 @@ export default class Produtos extends Component {
         <div className='list-filter'>
           <Row className='box-filter'>
             <Col xs={1.5}>
-              <Form.Control as='select' value={this.state.filter} onChange={this.updateFild} id='filter'>
+              <Input type='select' value={this.state.filter} onChange={this.updateFild} id='filter'>
                 <option value='nome'>Nome</option>
                 <option value='descricao'>Descrição</option>
                 <option value='id'>Código</option>
-              </Form.Control>
+              </Input>
             </Col>
             <Col xs={3}>
-              <Form.Control onKeyPress={this.onPress} type='search' placeholder='Procurar por...' value={this.state.search} onChange={this.updateFild} id='search' />
+              <Input onKeyPress={this.onPress} type='search' placeholder='Procurar por...' value={this.state.search} onChange={this.updateFild} id='search' />
             </Col>
             <Col>
-              <Button variant='primary' onClick={this.onSearch}>
+              <Button color='primary' onClick={this.onSearch}>
                 <FaSearch />
               </Button>
             </Col>

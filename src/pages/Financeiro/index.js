@@ -3,7 +3,7 @@ import { FaExclamationTriangle, FaSearch } from 'react-icons/fa'
 import { Redirect } from 'react-router-dom'
 
 import HeaderFinanceiro from '../../components/HeaderFinanceiro'
-import { Table, Form, Row, Col, Button, Alert } from 'react-bootstrap'
+import { Table, Input, Row, Col, Button, Alert } from 'reactstrap'
 import Loading from '../../components/Loading'
 
 import * as serviceFinanceiro from '../../services/serviceFinanceiro'
@@ -31,10 +31,16 @@ export default class Financeiro extends Component {
     this.setState({
       loading: true
     })
-    this.setState({
-      loading: false,
-      list: await serviceFinanceiro.getList({ search: this.state.search, filter: this.state.filter })
-    })
+    try {
+      this.setState({
+        loading: false,
+        list: await serviceFinanceiro.getList({ search: this.state.search, filter: this.state.filter })
+      })
+    } catch (error) {
+      console.log(error)
+      this.setState({ loading: false })
+      window.alert.error(error)
+    }
   }
 
   onPress = (event) => {
@@ -58,7 +64,7 @@ export default class Financeiro extends Component {
         <div className='list-filter'>
           <Row className='box-filter'>
             <Col xs={1.5}>
-              <Form.Control as='select' value={this.state.filter} onChange={this.updateFild} id='filter'>
+              <Input type='select' value={this.state.filter} onChange={this.updateFild} id='filter'>
                 <option value='financeiro.tipo'>Tipo da conta</option>
                 <option value='financeiro.data_vencimento'>Data de vencimento</option>
                 <option value='formas_pagamento.nome'>Forma de pagamento</option>
@@ -70,13 +76,13 @@ export default class Financeiro extends Component {
                 <option value='cliente.email'>E-mail</option>
                 <option value='cliente.cidade'>Cidade</option>
                 <option value='cliente.uf'>UF</option>
-              </Form.Control>
+              </Input>
             </Col>
             <Col xs={3}>
-              <Form.Control onKeyPress={this.onPress} type='search' placeholder='Procurar por...' value={this.state.search} onChange={this.updateFild} id='search' />
+              <Input onKeyPress={this.onPress} type='search' placeholder='Procurar por...' value={this.state.search} onChange={this.updateFild} id='search' />
             </Col>
             <Col>
-              <Button variant='primary' onClick={this.onSearch}>
+              <Button color='primary' onClick={this.onSearch}>
                 <FaSearch />
               </Button>
             </Col>
@@ -113,8 +119,8 @@ export default class Financeiro extends Component {
                     <td>R$ {serviceUtil.formatReal(item.valor)}</td>
                     <td>{item.situacao}</td>
                     <td>
-                      { item.tipo === 'A receber' && <Alert variant='success'>A receber</Alert> }
-                      { item.tipo === 'A pagar' && <Alert variant='danger'>A pagar</Alert> }
+                      { item.tipo === 'A receber' && <Alert color='success'>A receber</Alert> }
+                      { item.tipo === 'A pagar' && <Alert color='danger'>A pagar</Alert> }
                     </td>
                   </tr>
                 ))}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Button, Container, Row, Col } from 'react-bootstrap'
+import { Input, Button, Container, Row, Col, Label, FormGroup } from 'reactstrap'
 import { Link, Redirect } from 'react-router-dom'
 
 import HeaderClientes from '../../components/HeaderClientes'
@@ -65,80 +65,80 @@ export default class ClientesCadastro extends Component {
 
             <Row>
               <Col>
-                <Form.Group>
-                  <Form.Label>Nome/Fantasia:</Form.Label>
-                  <Form.Control autoFocus type='text' onChange={this.updateField} id='fantasia' value={this.state.fantasia} />
-                </Form.Group>
+                <FormGroup>
+                  <Label>Nome/Fantasia:</Label>
+                  <Input autoFocus type='text' onChange={this.updateField} id='fantasia' value={this.state.fantasia} />
+                </FormGroup>
               </Col>
               <Col>
-                <Form.Group>
-                  <Form.Label>Apelido/Razão Social:</Form.Label>
-                  <Form.Control type='text' onChange={this.updateField} id='razao' value={this.state.razao} />
-                </Form.Group>
+                <FormGroup>
+                  <Label>Apelido/Razão Social:</Label>
+                  <Input type='text' onChange={this.updateField} id='razao' value={this.state.razao} />
+                </FormGroup>
               </Col>
               <Col>
-                <Form.Group>
-                  <Form.Label>CPF/CNPJ:</Form.Label>
-                  <Form.Control type='text' onChange={this.updateField} id='cnpj' value={this.state.cnpj} />
-                </Form.Group>
+                <FormGroup>
+                  <Label>CPF/CNPJ:</Label>
+                  <Input type='text' onChange={this.updateField} id='cnpj' value={this.state.cnpj} />
+                </FormGroup>
               </Col>
             </Row>
 
             <Row>
               <Col xs={6}>
-                <Form.Group>
-                  <Form.Label>Endereço:</Form.Label>
-                  <Form.Control type='text' onChange={this.updateField} id='endereco' value={this.state.endereco} />
-                </Form.Group>
+                <FormGroup>
+                  <Label>Endereço:</Label>
+                  <Input type='text' onChange={this.updateField} id='endereco' value={this.state.endereco} />
+                </FormGroup>
               </Col>
               <Col>
-                <Form.Group>
-                  <Form.Label>Cidade:</Form.Label>
-                  <Form.Control type='text' onChange={this.updateField} id='cidade' value={this.state.cidade} />
-                </Form.Group>
+                <FormGroup>
+                  <Label>Cidade:</Label>
+                  <Input type='text' onChange={this.updateField} id='cidade' value={this.state.cidade} />
+                </FormGroup>
               </Col>
               <Col>
-                <Form.Group>
-                  <Form.Label>UF:</Form.Label>
-                  <Form.Control type='text' onChange={this.updateField} id='uf' value={this.state.uf} />
-                </Form.Group>
+                <FormGroup>
+                  <Label>UF:</Label>
+                  <Input type='text' onChange={this.updateField} id='uf' value={this.state.uf} />
+                </FormGroup>
               </Col>
             </Row>
 
             <Row>
               <Col>
-                <Form.Group>
-                  <Form.Label>E-mail:</Form.Label>
-                  <Form.Control type='text' onChange={this.updateField} id='email' value={this.state.email} />
-                </Form.Group>
+                <FormGroup>
+                  <Label>E-mail:</Label>
+                  <Input type='text' onChange={this.updateField} id='email' value={this.state.email} />
+                </FormGroup>
               </Col>
               <Col>
-                <Form.Group>
-                  <Form.Label>Telefone:</Form.Label>
-                  <Form.Control type='text' onChange={this.updateField} id='telefone' value={this.state.telefone} />
-                </Form.Group>
+                <FormGroup>
+                  <Label>Telefone:</Label>
+                  <Input type='text' onChange={this.updateField} id='telefone' value={this.state.telefone} />
+                </FormGroup>
               </Col>
               <Col>
-                <Form.Group>
-                  <Form.Label>Situação:</Form.Label>
-                  <Form.Control as='select' onChange={this.updateField} id='situacao' value={this.state.situacao}>
+                <FormGroup>
+                  <Label>Situação:</Label>
+                  <Input type='select' onChange={this.updateField} id='situacao' value={this.state.situacao}>
                     <option value='Ativo'>Ativo</option>
                     <option value='Inativo'>Inativo</option>
-                  </Form.Control>
-                </Form.Group>
+                  </Input>
+                </FormGroup>
               </Col>
             </Row>
 
             <Row>
               <Col>
-                <Form.Group>
-                  <Button disabled={this.state.loadingSave} onClick={this.save} variant='primary'>
+                <FormGroup>
+                  <Button className='mr-2' disabled={this.state.loadingSave} onClick={this.save} color='primary'>
                     { !this.state.loadingSave ? 'Salvar' : 'Salvando...'}
                   </Button>
                   <Link to='/clientes'>
                     <Button variant='secundary'> Cancelar </Button>
                   </Link>
-                </Form.Group>
+                </FormGroup>
               </Col>
             </Row>
           </Container>

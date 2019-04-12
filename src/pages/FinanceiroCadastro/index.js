@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Button, Container, Row, Col } from 'react-bootstrap'
+import { Input, Button, Container, Row, Col, Label, FormGroup } from 'reactstrap'
 import { Link, Redirect } from 'react-router-dom'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
@@ -82,75 +82,75 @@ export default class FinanceiroCadastro extends Component {
 
             <Row>
               <Col>
-                <Form.Group>
-                  <Form.Label>Cliente:</Form.Label>
-                  <Form.Control autoFocus as='select' value={this.state.cliente} onChange={this.updateField} id='cliente'>
+                <FormGroup>
+                  <Label>Cliente:</Label>
+                  <Input autoFocus type='select' value={this.state.cliente} onChange={this.updateField} id='cliente'>
                     <option value=''>Selecione um cliente</option>
                     { this.state.clientes.map(cliente => (
                       <option key={cliente.id} value={cliente.id}>{cliente.fantasia}</option>
                     ))}
-                  </Form.Control>
-                </Form.Group>
+                  </Input>
+                </FormGroup>
               </Col>
               <Col>
-                <Form.Group>
-                  <Form.Label>Valor:</Form.Label>
-                  <Form.Control type='number' onChange={this.updateField} id='valor' value={this.state.valor} />
-                </Form.Group>
+                <FormGroup>
+                  <Label>Valor:</Label>
+                  <Input type='number' onChange={this.updateField} id='valor' value={this.state.valor} />
+                </FormGroup>
               </Col>
               <Col>
-                <Form.Group>
-                  <Form.Label>Data vencimento:</Form.Label>
+                <FormGroup>
+                  <Label>Data vencimento:</Label>
                   <DatePicker locale={pt} dateFormat='dd/MM/yyyy' className='form-control' selected={this.state.data_vencimento} onChange={this.updateFieldDate} id='data_vencimento' />
                   <label className='inner-input' for='data_vencimento'>
                     <FaCalendarAlt color='#ccc' />
                   </label>
-                </Form.Group>
+                </FormGroup>
               </Col>
             </Row>
 
             <Row>
               <Col>
-                <Form.Group>
-                  <Form.Label>Forma de pagamento:</Form.Label>
-                  <Form.Control as='select' value={this.state.forma_pagamento} onChange={this.updateField} id='forma_pagamento'>
+                <FormGroup>
+                  <Label>Forma de pagamento:</Label>
+                  <Input type='select' value={this.state.forma_pagamento} onChange={this.updateField} id='forma_pagamento'>
                     <option value=''>Selecione uma forma de pagamento</option>
                     { this.state.formasPagamento.map(pag => (
                       <option key={pag.id} value={pag.id}>{pag.nome}</option>
                     ))}
-                  </Form.Control>
-                </Form.Group>
+                  </Input>
+                </FormGroup>
               </Col>
               <Col>
-                <Form.Group>
-                  <Form.Label>Situacao:</Form.Label>
-                  <Form.Control as='select' value={this.state.situacao} onChange={this.updateField} id='situacao'>
+                <FormGroup>
+                  <Label>Situacao:</Label>
+                  <Input type='select' value={this.state.situacao} onChange={this.updateField} id='situacao'>
                     <option value='Em aberto'>Em aberto</option>
                     <option value='Pago'>Pago</option>
-                  </Form.Control>
-                </Form.Group>
+                  </Input>
+                </FormGroup>
               </Col>
               <Col>
-                <Form.Group>
-                  <Form.Label>Tipo:</Form.Label>
-                  <Form.Control as='select' defaultValue={this.state.tipo} onChange={this.updateField} id='tipo'>
+                <FormGroup>
+                  <Label>Tipo:</Label>
+                  <Input type='select' defaultValue={this.state.tipo} onChange={this.updateField} id='tipo'>
                     <option value='A pagar'>A pagar</option>
                     <option value='A receber'>A receber</option>
-                  </Form.Control>
-                </Form.Group>
+                  </Input>
+                </FormGroup>
               </Col>
             </Row>
 
             <Row>
               <Col>
-                <Form.Group>
-                  <Button disabled={this.state.loadingSave} onClick={this.save} variant='primary'>
+                <FormGroup>
+                  <Button className='mr-2' disabled={this.state.loadingSave} onClick={this.save} color='primary'>
                     { !this.state.loadingSave ? 'Salvar' : 'Salvando...'}
                   </Button>
                   <Link to='/financeiro'>
                     <Button variant='secundary'> Cancelar </Button>
                   </Link>
-                </Form.Group>
+                </FormGroup>
               </Col>
             </Row>
           </Container>

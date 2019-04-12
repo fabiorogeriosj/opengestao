@@ -3,7 +3,7 @@ import { FaExclamationTriangle, FaSearch } from 'react-icons/fa'
 import { Redirect } from 'react-router-dom'
 
 import HeaderClientes from '../../components/HeaderClientes'
-import { Table, Form, Row, Col, Button } from 'react-bootstrap'
+import { Table, Input, Row, Col, Button } from 'reactstrap'
 import Loading from '../../components/Loading'
 
 import * as serviceClientes from '../../services/serviceClientes'
@@ -57,7 +57,7 @@ export default class Clientes extends Component {
         <div className='list-filter'>
           <Row className='box-filter'>
             <Col xs={1.5}>
-              <Form.Control as='select' value={this.state.filter} onChange={this.updateFild} id='filter'>
+              <Input type='select' value={this.state.filter} onChange={this.updateFild} id='filter'>
                 <option value='fantasia'>Nome/Fantasia</option>
                 <option value='cnpj'>CPF/CNPJ</option>
                 <option value='endereco'>Endereço</option>
@@ -66,13 +66,13 @@ export default class Clientes extends Component {
                 <option value='cidade'>Cidade</option>
                 <option value='uf'>UF</option>
                 <option value='situacao'>Situação</option>
-              </Form.Control>
+              </Input>
             </Col>
             <Col xs={3}>
-              <Form.Control onKeyPress={this.onPress} type='search' placeholder='Procurar por...' value={this.state.search} onChange={this.updateFild} id='search' />
+              <Input onKeyPress={this.onPress} type='search' placeholder='Procurar por...' value={this.state.search} onChange={this.updateFild} id='search' />
             </Col>
             <Col>
-              <Button variant='primary' onClick={this.onSearch}>
+              <Button color='primary' onClick={this.onSearch}>
                 <FaSearch />
               </Button>
             </Col>

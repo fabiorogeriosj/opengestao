@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Button, Container, Row, Col } from 'react-bootstrap'
+import { Input, Button, Container, Row, Col, Label, FormGroup } from 'reactstrap'
 import { Link, Redirect } from 'react-router-dom'
 
 import HeaderProdutos from '../../components/HeaderProdutos'
@@ -61,53 +61,53 @@ export default class ProdutosCadastro extends Component {
 
             <Row>
               <Col>
-                <Form.Group>
-                  <Form.Label>Nome:</Form.Label>
-                  <Form.Control autoFocus type='text' onChange={this.updateField} id='nome' value={this.state.nome} />
-                </Form.Group>
+                <FormGroup>
+                  <Label>Nome:</Label>
+                  <Input autoFocus type='text' onChange={this.updateField} id='nome' value={this.state.nome} />
+                </FormGroup>
               </Col>
             </Row>
 
             <Row>
               <Col>
-                <Form.Group>
-                  <Form.Label>Preço:</Form.Label>
-                  <Form.Control type='number' onChange={this.updateField} id='preco' value={this.state.preco} />
-                </Form.Group>
+                <FormGroup>
+                  <Label>Preço:</Label>
+                  <Input type='number' onChange={this.updateField} id='preco' value={this.state.preco} />
+                </FormGroup>
               </Col>
               <Col>
-                <Form.Group>
-                  <Form.Label>Estoque:</Form.Label>
-                  <Form.Control type='number' onChange={this.updateField} id='estoque' value={this.state.estoque} />
-                </Form.Group>
+                <FormGroup>
+                  <Label>Estoque:</Label>
+                  <Input type='number' onChange={this.updateField} id='estoque' value={this.state.estoque} />
+                </FormGroup>
               </Col>
               <Col>
-                <Form.Group>
-                  <Form.Label>Máximo de desconto:</Form.Label>
-                  <Form.Control type='number' onChange={this.updateField} id='maximo_desconto' value={this.state.maximo_desconto} />
-                </Form.Group>
-              </Col>
-            </Row>
-
-            <Row>
-              <Col>
-                <Form.Group>
-                  <Form.Label>Descrição:</Form.Label>
-                  <Form.Control as='textarea' rows='3' onChange={this.updateField} id='descricao' value={this.state.descricao} />
-                </Form.Group>
+                <FormGroup>
+                  <Label>Máximo de desconto:</Label>
+                  <Input type='number' onChange={this.updateField} id='maximo_desconto' value={this.state.maximo_desconto} />
+                </FormGroup>
               </Col>
             </Row>
 
             <Row>
               <Col>
-                <Form.Group>
-                  <Button disabled={this.state.loadingSave} onClick={this.save} variant='primary'>
+                <FormGroup>
+                  <Label>Descrição:</Label>
+                  <Input as='textarea' rows='3' onChange={this.updateField} id='descricao' value={this.state.descricao} />
+                </FormGroup>
+              </Col>
+            </Row>
+
+            <Row>
+              <Col>
+                <FormGroup>
+                  <Button className='mr-2' disabled={this.state.loadingSave} onClick={this.save} color='primary'>
                     { !this.state.loadingSave ? 'Salvar' : 'Salvando...'}
                   </Button>
                   <Link to='/produtos'>
                     <Button variant='secundary'> Cancelar </Button>
                   </Link>
-                </Form.Group>
+                </FormGroup>
               </Col>
             </Row>
           </Container>

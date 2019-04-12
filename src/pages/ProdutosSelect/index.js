@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { FaExclamationTriangle, FaSearch } from 'react-icons/fa'
 
-import { Table, Form, Row, Col, Button } from 'react-bootstrap'
+import { Table, Input, Row, Col, Button } from 'reactstrap'
 import Loading from '../../components/Loading'
 
 import * as serviceProdutos from '../../services/serviceProdutos'
@@ -47,17 +47,17 @@ export default class ProdutosSelect extends Component {
         <div>
           <Row className='mb-3'>
             <Col xs={1.5}>
-              <Form.Control as='select' value={this.state.filter} onChange={this.updateFild} id='filter'>
+              <Input type='select' value={this.state.filter} onChange={this.updateFild} id='filter'>
                 <option value='nome'>Nome</option>
                 <option value='descricao'>Descrição</option>
                 <option value='id'>Código</option>
-              </Form.Control>
+              </Input>
             </Col>
             <Col xs={3}>
-              <Form.Control autoFocus onKeyPress={this.onPress} type='search' placeholder='Procurar por...' value={this.state.search} onChange={this.updateFild} id='search' />
+              <Input autoFocus onKeyPress={this.onPress} type='search' placeholder='Procurar por...' value={this.state.search} onChange={this.updateFild} id='search' />
             </Col>
             <Col>
-              <Button variant='primary' onClick={this.onSearch}>
+              <Button color='primary' onClick={this.onSearch}>
                 <FaSearch />
               </Button>
             </Col>

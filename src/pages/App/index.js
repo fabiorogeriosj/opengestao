@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { HashRouter, Route, Redirect } from 'react-router-dom'
-import { Form, Button, Container, Row, Col } from 'react-bootstrap'
+import { Input, Button, Container, Row, Col, Label, FormGroup } from 'reactstrap'
 
 import Pedidos from '../Pedidos'
 import Clientes from '../Clientes'
@@ -121,22 +121,22 @@ class App extends Component {
           <Container className='d-flex justify-content-center align-items-center container'>
             <Row className='paddinBigTop'>
               <Col>
-                <Form.Group>
+                <FormGroup>
                   <h2>Faça o login</h2>
                   <p>Entre com seu usuário e senha para acessar o sistema!</p>
 
-                  <Form.Label>Usuário:</Form.Label>
-                  <Form.Control autoFocus type='text' onChange={this.updateField} id='loginUser' value={this.state.loginUser} />
+                  <Label>Usuário:</Label>
+                  <Input autoFocus type='text' onChange={this.updateField} id='loginUser' value={this.state.loginUser} />
 
-                  <Form.Label>Senha:</Form.Label>
-                  <Form.Control onKeyPress={this.pressEnter} type='password' onChange={this.updateField} id='loginPassword' value={this.state.loginPassword} />
+                  <Label>Senha:</Label>
+                  <Input onKeyPress={this.pressEnter} type='password' onChange={this.updateField} id='loginPassword' value={this.state.loginPassword} />
 
-                </Form.Group>
-                <Form.Group>
-                  <Button disabled={this.state.loadingLogin} onClick={this.login} variant='primary' type='submit'>
+                </FormGroup>
+                <FormGroup>
+                  <Button disabled={this.state.loadingLogin} onClick={this.login} color='primary' type='submit'>
                     { !this.state.loadingLogin ? 'Entrar' : 'Entrando...'}
                   </Button>
-                </Form.Group>
+                </FormGroup>
               </Col>
 
             </Row>
@@ -147,36 +147,36 @@ class App extends Component {
             <Row className='paddinBigTop'>
 
               <Col>
-                <Form.Group>
+                <FormGroup>
                   <h2>Configuração do banco de dados</h2>
                   <p>Não foi encontrado uma conexão com banco de dados, sendo assim configure sua conexão no formulário abaixo!</p>
 
-                  <Form.Label>Banco de dados:</Form.Label>
-                  <Form.Control as='select'>
+                  <Label>Banco de dados:</Label>
+                  <Input type='select'>
                     <option value='mysql'>MySQL</option>
-                  </Form.Control>
+                  </Input>
 
-                  <Form.Label>Host:</Form.Label>
-                  <Form.Control autoFocus type='text' placeholder='Exemplo: 192.168.1.1' onChange={this.updateField} id='host' value={this.state.host} />
+                  <Label>Host:</Label>
+                  <Input autoFocus type='text' placeholder='Exemplo: 192.168.1.1' onChange={this.updateField} id='host' value={this.state.host} />
 
-                  <Form.Label>Usuário:</Form.Label>
-                  <Form.Control type='text' placeholder='Exemplo: root' onChange={this.updateField} id='user' value={this.state.user} />
+                  <Label>Usuário:</Label>
+                  <Input type='text' placeholder='Exemplo: root' onChange={this.updateField} id='user' value={this.state.user} />
 
-                  <Form.Label>Senha:</Form.Label>
-                  <Form.Control type='password' placeholder='Exemplo: root' onChange={this.updateField} id='password' value={this.state.password} />
+                  <Label>Senha:</Label>
+                  <Input type='password' placeholder='Exemplo: root' onChange={this.updateField} id='password' value={this.state.password} />
 
-                  <Form.Label>Porta:</Form.Label>
-                  <Form.Control type='number' value={this.state.port} onChange={this.updateField} id='port' />
+                  <Label>Porta:</Label>
+                  <Input type='number' value={this.state.port} onChange={this.updateField} id='port' />
 
-                  <Form.Label>Nome do banco de dados:</Form.Label>
-                  <Form.Control type='text' placeholder='Exemplo: opengestao' value={this.state.dbname} onChange={this.updateField} id='dbname' />
+                  <Label>Nome do banco de dados:</Label>
+                  <Input type='text' placeholder='Exemplo: opengestao' value={this.state.dbname} onChange={this.updateField} id='dbname' />
 
-                </Form.Group>
-                <Form.Group>
-                  <Button disabled={this.state.loadingSave} onClick={this.connectAndTestDb} variant='primary' type='submit'>
+                </FormGroup>
+                <FormGroup>
+                  <Button disabled={this.state.loadingSave} onClick={this.connectAndTestDb} color='primary' type='submit'>
                     { !this.state.loadingSave ? 'Salvar e testar' : 'Salvando...'}
                   </Button>
-                </Form.Group>
+                </FormGroup>
               </Col>
 
             </Row>

@@ -2,18 +2,22 @@ import moment from 'moment'
 
 const getList = async (filter) => {
   return new Promise(async (resolve, reject) => {
-    const where = filter.search && filter.search !== '' ? `where ${filter.filter} like '%${filter.search}%'` : ''
-    const query = `select financeiro.id,
-      clientes.fantasia, clientes.cnpj, DATE_FORMAT(financeiro.data_vencimento, "%d/%m/%Y") as data_vencimento,
-      formas_pagamento.nome as forma_pagamento, financeiro.valor, financeiro.situacao, financeiro.tipo 
-      from financeiro 
-        inner join clientes on financeiro.cliente=clientes.id
-        inner join formas_pagamento on financeiro.forma_pagamento=formas_pagamento.id
-        ${where} 
-      order by clientes.fantasia limit 100
-    `
-    const financeiro = await window.db.query(query)
-    resolve(financeiro)
+    try {
+      const where = filter.search && filter.search !== '' ? `where ${filter.filter} like '%${filter.search}%'` : ''
+      const query = `select financeiro.id,
+        clientes.fantasia, clientes.cnpj, DATE_FORMAT(financeiro.data_vencimento, "%d/%m/%Y") as data_vencimento,
+        formas_pagamento.nome as forma_pagamento, financeiro.valor, financeiro.situacao, financeiro.tipo 
+        from financeiro 
+          inner join clientes on financeiro.cliente=clientes.id
+          inner join formas_pagamento on financeiro.forma_pagamento=formas_pagamento.id
+          ${where} 
+        order by clientes.fantasia limit 100
+      `
+      const financeiro = await window.db.query(query)
+      resolve(financeiro)
+    } catch (error) {
+      reject(error)
+    }
   })
 }
 

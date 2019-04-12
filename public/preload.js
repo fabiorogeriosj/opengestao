@@ -23,6 +23,7 @@ window.db.connect = () => {
     if (res && res.error && res.error.sqlMessage) return reject(res.error.sqlMessage)
     if (res && res.data) return resolve(res.data)
     if (!res) return reject(window.db.messageDbNotFound)
+    if (res && res.error && res.error.code) return reject(res.error.code)
   })
 }
 
