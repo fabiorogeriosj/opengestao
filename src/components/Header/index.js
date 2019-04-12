@@ -37,7 +37,7 @@ export default class Header extends Component {
     return (
       <div className='header'>
         <Link id='menu-pedidos' className={this.state.menuSelected === 'menu-pedidos' ? 'selected' : ''} to='/pedidos' onClick={this.selectMenu}>Pedidos</Link>
-        <Link id='menu-produtos' className={this.state.menuSelected === 'menu-produtos' ? 'selected' : ''} to='/produtos' onClick={this.selectMenu}>produtos</Link>
+        <Link id='menu-produtos' className={this.state.menuSelected === 'menu-produtos' ? 'selected' : ''} to='/produtos' onClick={this.selectMenu}>Produtos</Link>
         <Link id='menu-clientes' className={this.state.menuSelected === 'menu-clientes' ? 'selected' : ''} to='/clientes' onClick={this.selectMenu}>Clientes</Link>
         <Link id='menu-financeiro' className={this.state.menuSelected === 'menu-financeiro' ? 'selected' : ''} to='/financeiro' onClick={this.selectMenu}>Financeiro</Link>
       </div>

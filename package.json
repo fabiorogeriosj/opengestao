@@ -43,6 +43,7 @@
     "date-fns": "^2.0.0-alpha.27",
     "electron-is-dev": "^0.3.0",
     "electron-publisher-s3": "^20.17.2",
+    "jquery": "^3.4.0",
     "moment": "^2.24.0",
     "mysql": "^2.16.0",
     "react": "^16.4.1",
