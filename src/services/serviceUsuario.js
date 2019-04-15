@@ -10,6 +10,19 @@ const login = (username, password) => {
   })
 }
 
+const getAllWithoutLimit = async () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const query = `select * from usuario order by nome`
+      const usuarios = await window.db.query(query)
+      resolve(usuarios)
+    } catch (error) {
+      reject(error)
+    }
+  })
+}
+
 export {
-  login
+  login,
+  getAllWithoutLimit
 }

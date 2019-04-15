@@ -15,6 +15,7 @@ export default class Header extends Component {
       else if (window.location.hash.indexOf('clientes') !== -1) menuSelected = 'menu-clientes'
       else if (window.location.hash.indexOf('produtos') !== -1) menuSelected = 'menu-produtos'
       else if (window.location.hash.indexOf('financeiro') !== -1) menuSelected = 'menu-financeiro'
+      else if (window.location.hash.indexOf('comissoes') !== -1) menuSelected = 'menu-comissoes'
       else menuSelected = 'menu-pedidos'
 
       this.setState({
@@ -40,6 +41,7 @@ export default class Header extends Component {
         <Link id='menu-produtos' className={this.state.menuSelected === 'menu-produtos' ? 'selected' : ''} to='/produtos' onClick={this.selectMenu}>Produtos</Link>
         <Link id='menu-clientes' className={this.state.menuSelected === 'menu-clientes' ? 'selected' : ''} to='/clientes' onClick={this.selectMenu}>Clientes</Link>
         <Link id='menu-financeiro' className={this.state.menuSelected === 'menu-financeiro' ? 'selected' : ''} to='/financeiro' onClick={this.selectMenu}>Financeiro</Link>
+        <Link id='menu-comissoes' className={this.state.menuSelected === 'menu-comissoes' ? 'selected' : ''} to='/comissoes' onClick={this.selectMenu}>Comissões</Link>
       </div>
     )
   }

@@ -10,6 +10,9 @@ import ClientesCadastro from '../ClientesCadastro'
 import PedidosCadastro from '../PedidosCadastro'
 import Financeiro from '../Financeiro'
 
+import Comissoes from '../Comissoes'
+import ComissoesCadastro from '../ComissoesCadastro'
+
 import Header from '../../components/Header'
 import Loading from '../../components/Loading'
 
@@ -198,7 +201,12 @@ class App extends Component {
               <Route path='/produtos/cadastro/:id' component={ProdutosCadastro} />
               <Route path='/financeiro' exact component={Financeiro} />
               <Route path='/financeiro/cadastro' exact component={FinanceiroCadastro} />
+              <Route path='/produtos' exact component={Produtos} />
               <Route path='/financeiro/cadastro/:id' component={FinanceiroCadastro} />
+
+              <Route path='/comissoes' exact component={Comissoes} />
+              <Route path='/comissoes/cadastro' exact component={ComissoesCadastro} />
+              <Route path='/comissoes/cadastro/:id' component={ComissoesCadastro} />
             </div>
           </HashRouter>
         )}

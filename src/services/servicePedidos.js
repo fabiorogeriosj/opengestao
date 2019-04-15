@@ -22,6 +22,27 @@ const getList = async (filter) => {
   })
 }
 
+const getAllWithoutLimit = async () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const query = `select pedidos.id,
+      clientes.fantasia as cliente, clientes.cnpj, DATE_FORMAT(pedidos.data, "%d/%m/%Y") as data, usuario.nome as usuario,
+      formas_pagamento.nome as pagamento, pedidos.valor_desconto, pedidos.total_pedido, pedidos.status,
+      CONCAT('Código pedido: ', pedidos.id, ', Data: ',  DATE_FORMAT(pedidos.data, "%d/%m/%Y"), ', Usuário: ', usuario.nome, ', Cliente: ', clientes.fantasia, ', Valor pedido: ', pedidos.total_pedido) as label
+      from pedidos 
+        inner join clientes on pedidos.cliente=clientes.id
+        inner join formas_pagamento on pedidos.pagamento=formas_pagamento.id
+        inner join usuario on pedidos.usuario=usuario.id
+      order by clientes.fantasia limit 100
+    `
+      const pedidos = await window.db.query(query)
+      resolve(pedidos)
+    } catch (error) {
+      reject(error)
+    }
+  })
+}
+
 const save = async (pedido) => {
   return new Promise(async (resolve, reject) => {
     try {
@@ -80,5 +101,6 @@ export {
   getList,
   save,
   get,
-  getItens
+  getItens,
+  getAllWithoutLimit
 }
